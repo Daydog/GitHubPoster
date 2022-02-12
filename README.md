@@ -23,6 +23,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[Strava](#strava)**
 - **[开心词场](#cichang)**
 - **[扇贝](#shanbay)**
+- **[不背单词](#bbdc)**
 - **[Nintendo Switch](#ns)**
 - **[GPX](#GPX)**
 - **[多邻国](#duolingo)**
@@ -36,11 +37,13 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[WakaTime](#WakaTime)**
 - **[Dota2](#Dota2)**
 - **[Nike](#Nike)**
+- **[Notion](#Notion)**
 - **[Garmin](#Garmin)**
 - **[Forest](#Forest)**
 - **[Json](#json)**
 - **[Multiple](#Multiple)**
 - **[即刻](#Jike)**
+- **[微信读书](#WeRead)**
 - **[总结](#Summary)**
 
 
@@ -203,6 +206,23 @@ github_poster shanbay --shanbay_user_name ${user_name} --year 2012-2021 --specia
 ```
 </details>
 
+### 不背单词
+
+<details>
+<summary>Make your <code>不背单词（bbdc）</code> GitHub poster</summary>
+<br>
+
+在设置最下方可以获得 user_id
+![Screenshot_2022-01-15-18-58-00-833_cn com langeas](https://user-images.githubusercontent.com/31370133/149619270-f3d9b61c-c497-4dde-a0d0-09254606856d.jpg)
+
+
+```
+python3 -m github_poster bbdc --bbdc_user_id ${user_id} --bbdc_type ${time/word}
+or
+github_poster bbdc --bbdc_user_id ${user_id} --bbdc_type ${time/word}
+```
+</details>
+
 ### Issue
 
 <details>
@@ -210,6 +230,8 @@ github_poster shanbay --shanbay_user_name ${user_name} --year 2012-2021 --specia
 <br>
 
 可以参考我的 [issue](https://github.com/yihong0618/2021/issues/5)
+> 1. 确保issue中是有内容的
+> 2. 内容的第一行必须是数字，因为是取的第一行的数字来进行计数的
 
 ```
 python3 -m github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --github_token ${github_token}
@@ -379,7 +401,7 @@ github_poster dota2 --dota2_id="your dota2 id" --year 2017-2018
 ### Nike
 
 <details>
-<summary>Make your <code> Nike </code> poster</summary>>
+<summary>Make your <code> Nike </code> poster</summary>
 
 获取 Nike 的 refresh_token
 
@@ -395,9 +417,37 @@ github_poster nike --nike_refresh_token="your nike_refresh_token" --year 2012-20
 
 </details>
 
+### Notion
+
+<details>
+<summary>Make your <code> Notion </code> poster</summary>
+
+获取 Notion 的 `Internal Integration Token`(notion_token)，查看[官方文档](https://developers.notion.com/docs/authorization#authorizing-internal-integrations)获取更多信息。
+
+1. 登录 [Notion](https://www.notion.so/my-integrations) 开发者网站
+2. 点击「New integration」添加基础信息后，创建新的 Token
+3. 提交后可以看到 `Secrets` 下的 `Internal Integration Token`
+
+获取用于生成 Poster 的 Notion 数据库 ID(database_id)，查看[官方文档](https://developers.notion.com/docs/working-with-databases#adding-pages-to-a-database)获取更多信息。
+
+1. 以全屏页面打开数据库
+2. 复制页面链接，链接组成应该是 `https://www.notion.so/{workspace_name}/{database_id}?v={view_id}` 这样的
+3. 其中 `{database_id}` 部分即为数据库 ID
+
+注：数据库需要添加一个属性类型为 `Date` 的日期属性，该属性的值将作为生成 Poster 的日期数据使用。在生成时需将该日期属性的名称作为选项 `prop_name` 的值，默认值为 `Datetime`
+
+```
+python3 -m github_poster notion --notion_token="your notion_token" --database_id="your database_id" --prop_name="your prop_name"
+or
+github_poster notion --notion_token="your notion_token" --database_id="your database_id" --prop_name="your prop_name"
+```
+
+</details>
+
 ### Garmin
 <details>
-<summary>Make your <code> Garmin </code> poster</summary>>
+<summary>Make your <code> Garmin </code> poster</summary>
+
 
 需要填写 Garmin 的账号和密码
 
@@ -499,6 +549,28 @@ github_poster jike --jike_cookie "your jike cookie" --jike_user_id "your jike us
 
 </details>
 
+## 微信读书
+
+<details>
+<summary>Make your <code>微信读书 (source data) types</code> poster</summary>
+<br>
+
+需要获取微信读书网页版的 Cookie
+
+How to:
+
+- 浏览器打开 https://x.weread.qq.com
+- 微信扫码登录确认，提示没有权限忽略即可
+- 按F12进入开发者模式，依次点 Network -> Doc -> Headers-> cookie。复制 Cookie 字符串;
+
+
+```
+python3 -m github_poster weread --weread_cookie "your weread cookie" --year 2020-2022 --me "your name"
+or
+github_poster weread --weread_cookie "your weread cookie" --year 2020-2022 --me "your name"
+```
+
+</details>
 
 # 参与项目
 
@@ -541,6 +613,7 @@ github_poster jike --jike_cookie "your jike cookie" --jike_user_id "your jike us
 - @[JasonkayZK](https://github.com/JasonkayZK) Wakatime loader
 - @[shaonianche](https://github.com/shaonianche) Dota2 loader
 - @[umm233](https://github.com/umm233) Jike loader
+- @[ruter](https://github.com/ruter) Notion loader
 - @[frostming](https://github.com/frostming) `CI` refator and some Actions code
 
 # 赞赏

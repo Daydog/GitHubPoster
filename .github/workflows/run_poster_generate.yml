@@ -81,7 +81,7 @@ jobs:
       - name: Run sync leetcode script
         if: contains(env.TYPE, 'leetcode')
         run: |
-          python -m github_poster leetcode --leetcode_cookie  '${{ secrets.LEETCODE_COOKIE }} --me ${{ env.ME }}
+          python -m github_poster leetcode --leetcode_cookie  "${{ secrets.LEETCODE_COOKIE }}" --me ${{ env.ME }}
 
       - name: Run sync twitter script
         if: contains(env.TYPE, 'twitter')
@@ -117,6 +117,11 @@ jobs:
         if: contains(env.TYPE, 'dota2')
         run: |
           python3 -m github_poster dota2 --dota2_id "${{ secrets.DOTA2_ID }}" --me ${{ env.ME }}
+
+      - name: Run sync notion script
+        if: contains(env.TYPE, 'notion')
+        run: |
+          python3 -m github_poster notion --notion_token "${{ secrets.NOTION_TOKEN }}" --database_id "${{ secrets.NOTION_DATABASE_ID }}" --prop_name "${{ secrets.NOTION_PROP_NAME }}" --me ${{ env.ME }}
 
       # change the types to yours
       - name: Run sync multiple script

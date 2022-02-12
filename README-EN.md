@@ -26,6 +26,7 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[WakaTime](#WakaTime)**
 - **[Dota2](#Dota2)**
 - **[Nike](#Nike)**
+- **[Notion](#Notion)**
 - **[Garmin](#Garmin)**
 - **[Forest](#Forest)**
 - **[Json](#Json)**
@@ -360,6 +361,34 @@ github_poster nike --nike_refresh_token="your nike_refresh_token" --year 2012-20
 
 </details>
 
+### Notion
+
+<details>
+<summary>Make your <code> Notion </code> poster</summary>
+
+Get Notion `Internal Integration Token`(notion_token), see [here](https://developers.notion.com/docs/authorization#authorizing-internal-integrations) for more details.
+
+1. Sign in [Notion](https://www.notion.so/my-integrations) developers site
+2. Click 'New integration' to create a new token
+3. You can see `Internal Integration Token` below `Secrets` after submit
+
+Get Notion Database ID(database_id), see [here](https://developers.notion.com/docs/working-with-databases#adding-pages-to-a-database) for more details.
+
+1. Open the database as a full page in Notion
+2. Use the `Share` menu to `Copy link`, and you'll get a URL looks like `https://www.notion.so/{workspace_name}/{database_id}?v={view_id}`
+3. The part that corresponds to `{database_id}` is the ID of your Notion Database
+
+Note：The database need a property which type is `Date`, the value of it will be used to generate the poster. 
+The name of the date property shoould be set as option `prop_name`'s value，default value is `Datetime`
+
+```
+python3 -m github_poster notion --notion_token="your notion_token" --database_id="your database_id" --prop_name="your prop_name"
+or
+github_poster notion --notion_token="your notion_token" --database_id="your database_id" --prop_name="your prop_name"
+```
+
+</details>
+
 ### Garmin
 <details>
 
@@ -503,6 +532,7 @@ Before submitting PR:
 - @[JasonkayZK](https://github.com/JasonkayZK) Wakatime loader
 - @[shaonianche](https://github.com/shaonianche) Dota2 loader
 - @[umm233](https://github.com/umm233) Jike loader
+- @[ruter](https://github.com/ruter) Notion loader
 - @[frostming](https://github.com/frostming) `CI` refator and some Actions code
 
 # Support
