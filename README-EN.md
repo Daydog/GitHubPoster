@@ -42,7 +42,7 @@ git clone https://github.com/yihong0618/GitHubPoster.git
 ## pip install
 
 ```
-pip3 install -U github_poster
+pip3 install -U 'github_poster[all]'
 ```
 
 ## Install(Python3.6+)
@@ -534,6 +534,7 @@ Before submitting PR:
 - @[umm233](https://github.com/umm233) Jike loader
 - @[ruter](https://github.com/ruter) Notion loader
 - @[frostming](https://github.com/frostming) `CI` refator and some Actions code
+- @[j178](https://github.com/j178) refator the import logic
 
 # Support
 Thanks is enough.
